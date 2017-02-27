@@ -9,6 +9,7 @@
 import UIKit
 
 class ViewController: UIViewController {
+    static var infoPizza = pizzaEntity()
 
     override func viewDidLoad() {
         super.viewDidLoad()

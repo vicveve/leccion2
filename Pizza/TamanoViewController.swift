@@ -1,0 +1,60 @@
+//
+//  TamanoViewController.swift
+//  Pizza
+//
+//  Created by Victor Ernesto Velasco Esquivel on 26/02/17.
+//  Copyright © 2017 Victor Ernesto Velasco Esquivel. All rights reserved.
+//
+
+import UIKit
+
+class TamanoViewController: UIViewController {
+    @IBOutlet weak var tamanoSeleccion: UISegmentedControl!
+    var pizza = pizzaEntity()
+    var sTamanio : String = ""
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        sTamanio = "Chica"
+        // Do any additional setup after loading the view.
+    }
+
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+        // Dispose of any resources that can be recreated.
+        
+    }
+    
+    @IBAction func cambiaValor(_ sender: UISegmentedControl) {
+        
+        let seleccionTamano = tamanoSeleccion.selectedSegmentIndex
+        
+        let tamano : String = tamanoSeleccion.titleForSegment(at: seleccionTamano)!
+        sTamanio = tamano
+    }
+    
+    
+   
+    
+    //obtiene clase del siguiente controlador
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        let sigVista=segue.destination as! MasaViewController
+        pizza.agregaTamanio(tamanioNuevo: sTamanio)
+        
+        
+        sigVista.pizza = pizza
+        
+    }
+    
+
+    /*
+    // MARK: - Navigation
+
+    // In a storyboard-based application, you will often want to do a little preparation before navigation
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        // Get the new view controller using segue.destinationViewController.
+        // Pass the selected object to the new view controller.
+    }
+    */
+
+}
